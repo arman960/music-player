@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Music Player</title>
+    <link rel="stylesheet" href="https://unpkg.com/howler@2.2.3/dist/howler.css">
+    <style>
+        body {
+            background-color: #f0f0f0; /* Replace with your desired background color */
+        }
+
+        #musicPlayer {
+            max-width: 400px;
+            margin: 50px auto;
+            text-align: center;
+            background-color: #fff; /* Replace with your desired background color */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #playerImage {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        #playerControls {
+            margin-top: 20px;
+        }
+
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="musicPlayer">
+        <img id="playerImage" src="https://drive.google.com/uc?id=1tTlBrDFRa5ofBKmkdm63Yz3U7muF0FAe" alt="Album Cover">
+        <h2>アーマン</h2>
+        <div id="playerControls">
+            <button id="playButton">Play</button>
+            <button id="pauseButton">Pause</button>
+            <button id="stopButton">Stop</button>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/howler@2.2.3/dist/howler.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
+document.addEventListener('DOMContentLoaded', function () {
+    const audio = new Howl({
+        src: [
+            'https://drive.google.com/uc?id=1IsbbERJL0YC-kutyErvdv9NoFw7DEWVz',
+            'https://drive.google.com/uc?id=1dafxrbnkpR5eAANXalO4YRE6I8YVI6tb',
+            'https://drive.google.com/uc?id=1hSIJ70eeBDmtLL1uLeutojHDBwDFJVLO',
+            'https://drive.google.com/uc?id=1jk7WcC7O5abvlCtB6RLHfcgjYig89Q50',
+            'https://drive.google.com/uc?id=1qaIXjWa8pJ4zQx4yuu_zmHadgwzf3-wd',
+            'https://drive.google.com/uc?id=1qu0VatcxtB_bTfZ2dzDWJhj0m4OF3VxP'
+        ],
+        loop: true,
+        volume: 0.5,
+    });
+
+    const playButton = document.getElementById('playButton');
+    const pauseButton = document.getElementById('pauseButton');
+    const stopButton = document.getElementById('stopButton');
+
+    playButton.addEventListener('click', function () {
+        audio.play();
+    });
+
+    pauseButton.addEventListener('click', function () {
+        audio.pause();
+    });
+
+    stopButton.addEventListener('click', function () {
+        audio.stop();
+    });
+});
